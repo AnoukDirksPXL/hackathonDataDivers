@@ -1,114 +1,63 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ocean Health Index</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ocean Health Index</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
 <main class="container">
-<!-- card-->
-<section class="card intro sea-img-wrap">
-<h1>Voorspel de Biodiversiteit</h1>
-<p class="muted">Vul de waarden in en krijg...</p>
+  <!-- card -->
+  <section class="card intro sea-img-wrap">
+    <h1>Voorspel de Biodiversiteit</h1>
+    <p class="muted">Vul de waarden in en krijg...</p>
 
+    <div class="sea-imgs" aria-hidden="true">
+      <img src="assets/sea/fish-blue.png"  alt="" class="sea-img fish-blue pos-1" />
+      <img src="assets/sea/turtle.png"     alt="" class="sea-img turtle    pos-2" />
+      <img src="assets/sea/jelly.png"      alt="" class="sea-img jelly     pos-3" />
+      <img src="assets/sea/coral.png"      alt="" class="sea-img coral     pos-4" />
+      <img src="assets/sea/clownfish.png"  alt="" class="sea-img clownfish pos-5" />
+      <img src="assets/sea/star.png"       alt="" class="sea-img star      pos-6" />
+    </div>
+  </section>
 
-<!-- ✨ kleine afbeeldingen rond de card -->
-<div class="sea-imgs" aria-hidden="true">
-<img src="assets/sea/fish-blue.png" alt="" class="sea-img fish-blue pos-1" />
-<img src="assets/sea/turtle.png" alt="" class="sea-img turtle pos-2" />
-<img src="assets/sea/jelly.png" alt="" class="sea-img jelly pos-3" />
-<img src="assets/sea/coral.png" alt="" class="sea-img coral pos-4" />
-<img src="assets/sea/clownfish.png" alt="" class="sea-img clownfish pos-5" />
-<img src="assets/sea/star.png" alt="" class="sea-img star pos-6" />
-</div>
-</section>
+  <!-- Formulier -->
+  <section class="card sea-img-wrap" id="predict">
+    <form id="form-predict">
+      <div class="grid">
+        <div class="field"><label for="lat">Breedtegraad (°)</label><input id="lat" name="lat" type="number" step="0.0001" placeholder="51.2194" required /></div>
+        <div class="field"><label for="lon">Lengtegraad (°)</label><input id="lon" name="lon" type="number" step="0.0001" placeholder="4.4025" required /></div>
+        <div class="field"><label for="year">Jaar</label><input id="year" name="year" type="number" min="1990" max="2100" placeholder="2025" required /></div>
+        <div class="field"><label for="sst">Zeeoppervlaktetemp. (°C)</label><input id="sst" name="sst" type="number" step="0.1" placeholder="18.4" required /></div>
+        <div class="field"><label for="chl">Chlorofyl-a (mg/m³)</label><input id="chl" name="chl" type="number" step="0.01" placeholder="1.25" required /></div>
+        <div class="field"><label for="pollution">Vervuilingsindex (0–1)</label><input id="pollution" name="pollution" type="number" min="0" max="1" step="0.01" placeholder="0.22" required /></div>
+        <div class="field"><label for="biodiv">Biodiversiteitscore (0–1)</label><input id="biodiv" name="biodiv" type="number" min="0" max="1" step="0.01" placeholder="0.68" required /></div>
+        <div class="field"><label for="protection">Beschermd gebied (%)</label><input id="protection" name="protection" type="number" min="0" max="100" step="0.1" placeholder="12.5" required /></div>
+      </div>
+      <div class="action"><button type="submit" class="btn primary">Voorspel</button></div>
+    </form>
 
+    <div class="sea-imgs" aria-hidden="true">
+      <img src="assets/sea/fish-blue.png" alt="" class="sea-img fish-blue pos-7" />
+      <img src="assets/sea/jelly.png"     alt="" class="sea-img jelly     pos-8" />
+      <img src="assets/sea/star.png"      alt="" class="sea-img star      pos-9" />
+      <img src="assets/sea/coral.png"     alt="" class="sea-img coral     pos-10" />
+    </div>
+  </section>
 
-<!-- Formulier -->
-<section class="card sea-img-wrap" id="predict">
-<form id="form-predict">
-<div class="grid">
-<div class="field">
-<label for="lat">Breedtegraad (°)</label>
-<input id="lat" name="lat" type="number" step="0.0001" placeholder="51.2194" required />
-</div>
+  <!-- Resultaat -->
+  <section class="card result sea-img-wrap" hidden>
+    <h1>Het resultaat voor de voorspelling:</h1>
+    <p class="muted">De voorspelling</p>
 
-
-<div class="field">
-<label for="lon">Lengtegraad (°)</label>
-<input id="lon" name="lon" type="number" step="0.0001" placeholder="4.4025" required />
-</div>
-
-
-<div class="field">
-<label for="year">Jaar</label>
-<input id="year" name="year" type="number" min="1990" max="2100" placeholder="2025" required />
-</div>
-
-
-<div class="field">
-<label for="sst">Zeeoppervlaktetemp. (°C)</label>
-<input id="sst" name="sst" type="number" step="0.1" placeholder="18.4" required />
-</div>
-
-
-<div class="field">
-<label for="chl">Chlorofyl‑a (mg/m³)</label>
-<input id="chl" name="chl" type="number" step="0.01" placeholder="1.25" required />
-</div>
-
-
-<div class="field">
-<label for="pollution">Vervuilingsindex (0–1)</label>
-<input id="pollution" name="pollution" type="number" min="0" max="1" step="0.01" placeholder="0.22" required />
-</div>
-
-
-<div class="field">
-<label for="biodiv">Biodiversiteitscore (0–1)</label>
-<input id="biodiv" name="biodiv" type="number" min="0" max="1" step="0.01" placeholder="0.68" required />
-</div>
-
-
-<div class="field">
-<label for="protection">Beschermd gebied (%)</label>
-<input id="protection" name="protection" type="number" min="0" max="100" step="0.1" placeholder="12.5" required />
-</div>
-</div>
-
-
-<div class="action">
-<button type="submit" class="btn primary">Voorspel</button>
-</div>
-</form>
-
-
-<!-- ✨ afbeeldingen rond de formulier-card -->
-<div class="sea-imgs" aria-hidden="true">
-<img src="assets/sea/fish-blue.png" alt="" class="sea-img fish-blue pos-7" />
-<img src="assets/sea/jelly.png" alt="" class="sea-img jelly pos-8" />
-<img src="assets/sea/star.png" alt="" class="sea-img star pos-9" />
-<img src="assets/sea/coral.png" alt="" class="sea-img coral pos-10" />
-</div>
-</section>
-
-
-<!-- Resultaat -->
-<section class="card result sea-img-wrap" hidden>
-<h1>Het resultaat voor de voorspelling:</h1>
-<p class="muted">De voorspelling</p>
-
-
-<div class="sea-imgs" aria-hidden="true">
-<img src="assets/sea/turtle.png" alt="" class="sea-img turtle pos-11" />
-<img src="assets/sea/clownfish.png" alt="" class="sea-img clownfish pos-12" />
-<img src="assets/sea/fish-blue.png" alt="" class="sea-img fish-blue pos-13" />
-</div>
-</section>
+    <div class="sea-imgs" aria-hidden="true">
+      <img src="assets/sea/turtle.png"    alt="" class="sea-img turtle    pos-11" />
+      <img src="assets/sea/clownfish.png" alt="" class="sea-img clownfish pos-12" />
+      <img src="assets/sea/fish-blue.png" alt="" class="sea-img fish-blue pos-13" />
+    </div>
+  </section>
 </main>
 </body>
 </html>
