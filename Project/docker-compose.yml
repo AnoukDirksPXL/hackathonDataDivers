@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./api
+    image: biodiversity-api:latest
+    container_name: biodiversity_api
+    environment:
+      - MODEL_PATH=/app/biodiversity_model.pkl
+    expose:
+      - "8000"   # zichtbaar binnen het compose-netwerk
+    restart: unless-stopped
+
+    # Optional: healthcheck
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  web:
+    build:
+      context: ./web
+    image: biodiversity-web:latest
+    container_name: biodiversity_web
+    ports:
+      - "8082:80"     # open voor je browser → http://localhost:8080
+    depends_on:
+      - api
+    restart: unless-stopped
